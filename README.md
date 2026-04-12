@@ -29,6 +29,26 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+
+This system is a simple content-based recommender. It suggests songs to a user by comparing the features of each song to the user's preferences.. Each 'Song' in the system has features such as genre, mood, energy, and temp_bpm. These features help describe the overall "vibe" of the song. For example, energy and temp help capture how fast or intense a song feels, while genre and mood dedcribe its style and emotional tone. The 'UserProfile' stores the user's preferences for these same features. This includes their desired genres, mood, and target values for numbered features like energy or tempo. These preferences represent what kind of music the user enjoys. The 'Recommender' calculates a score for each song by comparing the song's features to the user's preferences. Songs get higher scores when they are more similar to the user's taste. For example, if a song's energy level is close to the user's preffered energy, it will recieve a higher score. Matching categories like genre or modd can also add more points. Different features maybe weighted differently depending on how important they are. After calculating scores for all songs, the system ranks them from highest to lowest score. The top ranked songs are then recommended to the user, since they are the closest match to the user's preferences.
+
+
+Algorith Recipe:
+- _2.0 points if the song's genre matches the user's favorite genre
+- +1.0 point if the song's mood matches the user's favortie mood 
+- Add a similarity score for energy based in how close the song's energy is to the user's target energy 
+- Add a similarity score for tempo chased on how close the song's tempo is to the user's target tempo. 
+
+After calculating scores for all songs, teh system ranks them from highest to lowest. The top ranked songs are then recommended to the user. 
+
+System Flow:
+Input (User Preferences) : Process (Loop through songs and calculate scores) , then Output: (Rank songs and return top recommendations)
+
+Design Improvement: 
+The User profile was redefined after testing. Firstly, the songs from other genres such as rock, could score highly if they matched energy and mood. To fix this, a target tempo was added and genre was given a higher weight. This helps the system better distinguish between the different types of music. 
+
+Potential Bias: This system might actually give more attention to the genre, which could cause it to ignore songs that match the user's mood or energy but belong to a different genre. 
+
 ---
 
 ## Getting Started
@@ -74,6 +94,10 @@ Use this section to document the experiments you ran. For example:
 - What happened when you added tempo or valence to the score
 - How did your system behave for different types of users
 
+
+I ran the recommender with a default pop/happy user profile and noticed that songs matching genre and mood were ranked highest. Energy and tempo helped fine-tune the ordering of results. Below is a screenshot of the output: 
+
+![Terminal Output](src/terminal_output.png)
 ---
 
 ## Limitations and Risks

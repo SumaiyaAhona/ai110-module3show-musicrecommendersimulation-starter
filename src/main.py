@@ -9,25 +9,54 @@ You will implement the functions in recommender.py:
 - recommend_songs
 """
 
+
 from src.recommender import load_songs, recommend_songs
 
 
 def main() -> None:
-    songs = load_songs("data/songs.csv") 
+    songs = load_songs("data/songs.csv")
 
-    # Starter example profile
-    user_prefs = {"favorite_genre": "pop", "favorite_mood": "happy", "target_energy": 0.8, "target_tempo": 120}
+    # Edge-case / adversarial user profiles (Phase 4 testing)
+    edge_case_profiles = [
+        {
+            "name": "High Energy Pop",
+            "favorite_genre": "pop",
+            "favorite_mood": "happy",
+            "target_energy": 0.9,
+            "target_tempo": 130
+        },
+        {
+            "name": "Chill Lofi",
+            "favorite_genre": "lofi",
+            "favorite_mood": "calm",
+            "target_energy": 0.3,
+            "target_tempo": 80
+        },
+        {
+            "name": "Deep Intense Rock",
+            "favorite_genre": "rock",
+            "favorite_mood": "intense",
+            "target_energy": 0.95,
+            "target_tempo": 160
+        }
+    ]
 
-    recommendations = recommend_songs(user_prefs, songs, k=5)
+    # Run recommender for each profile
+    for profile in edge_case_profiles:
+        print("\n" + "=" * 50)
+        print(f"PROFILE: {profile['name']}")
+        print("=" * 50)
 
-    print("\nTop recommendations:\n")
-    for rec in recommendations:
-        # You decide the structure of each returned item.
-        # A common pattern is: (song, score, explanation)
-        song, score, explanation = rec
-        print(f"{song['title']} - Score: {score:.2f}")
-        print(f"Because: {explanation}")
-        print()
+        recommendations = recommend_songs(profile, songs, k=5)
+
+        print("\nTop recommendations:\n")
+
+        for song, score, explanation in recommendations:
+            print(f"{song['title']} - Score: {score:.2f}")
+            print("Because:")
+            for reason in explanation.split("; "):
+                print(f"  - {reason}")
+            print()
 
 
 if __name__ == "__main__":

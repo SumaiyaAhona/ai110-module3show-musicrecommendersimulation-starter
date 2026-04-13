@@ -70,6 +70,8 @@ Prompts:
 - Cases where the system overfits to one preference  
 - Ways the scoring might unintentionally favor some users  
 
+The recommender system only uses a few features like genre, mood, energy, and tempo. Because of this, it does not capture more detailed aspects of music such as lyrics or emotional meaning. Some genres or moods may be overrepresented in the dataset, which can create bias in recommendations. The scoring system can also over-prioritize certain features depending on the weights. This can cause different users to receive similar recommendations even when their preferences are different.
+
 ---
 
 ## 7. Evaluation  
@@ -85,6 +87,7 @@ Prompts:
 
 No need for numeric metrics unless you created some.
 
+I tested the recommender using different user profiles such as High Energy Pop, Chill Lofi, and Deep Intense Rock. The system produced different rankings for each profile, showing that it responds to changes in user preferences. I looked at whether the top songs matched the expected mood, genre, and energy levels. One thing I noticed was that some songs appeared across multiple profiles, especially when they had balanced feature values. Overall, the results made sense but showed limitations in personalization due to the simple scoring system.
 ---
 
 ## 8. Future Work  

@@ -98,6 +98,19 @@ Use this section to document the experiments you ran. For example:
 I ran the recommender with a default pop/happy user profile and noticed that songs matching genre and mood were ranked highest. Energy and tempo helped fine-tune the ordering of results. Below is a screenshot of the output: 
 
 ![Terminal Output](src/terminal_output.png)
+
+
+
+I tested my recommender system using multiple edge case user profiles to evaluate how well the scoring logic adapts to different types of musical preferences. 
+
+This is the High Energy Pop
+![High Energy Pop](src/profile_one.png)
+
+This is Chill Lofi
+![Chill Lofi](src/profile_two.png)
+
+This is Deep Intense Rock 
+![Rock](src/profile_three.png)
 ---
 
 ## Limitations and Risks
@@ -112,6 +125,9 @@ Examples:
 
 You will go deeper on this in your model card.
 
+One limitation of this recommender is that it relies deeply on a small number of features (genre, mood, energy,a nd tempo). Because of this,different user profiles can sometimes recieve similar reccomendations if songs share overlapping feature values.  Another limitation is that the dataset is small and may overrepresent certain genres, which can bias the results toward those genres regardless of user preference strength. 
+
+
 ---
 
 ## Reflection
@@ -125,7 +141,7 @@ Write 1 to 2 paragraphs here about what you learned:
 - about how recommenders turn data into predictions
 - about where bias or unfairness could show up in systems like this
 
-
+Through this project, I learned how recommendation systems covert user preferences and item featues into numerical scores. Even simple wighted scoring systems can create meaningful rankings that resemble the real-worl platforms like Spotify. Howver, I also learned that these systems are highly sensitive to design choices like feature selection and weighting. Small changes in weights can change the recommendations, which shows how bias and over-priortization of certain feautres can easily appear in recommender systems.
 ---
 
 ## 7. `model_card_template.md`

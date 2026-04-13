@@ -11,7 +11,7 @@ Your goal is to:
 - Evaluate what your system gets right and wrong
 - Reflect on how this mirrors real world AI recommenders
 
-Replace this paragraph with your own summary of what your version does.
+In this project, I built a simple music recommender system that suggests songs based on user preferences like genre, mood, energy, and tempo. The system compares each song’s features to a user profile and assigns a score to determine how well they match. It then ranks songs from highest to lowest score and recommends the top results. This project demonstrates how real-world recommendation systems use data and weighted scoring to generate personalized suggestions.
 
 ---
 
@@ -180,6 +180,8 @@ Describe your scoring logic in plain language.
 
 Try to avoid code in this section, treat it like an explanation to a non programmer.
 
+
+The model works by comparing each song’s features with a user’s preferences. It uses genre and mood matches as categorical signals and calculates similarity scores for numerical features like energy and tempo. Each match contributes to a total score, and songs with higher scores are ranked higher. The final recommendations are the top-scoring songs after all comparisons. This is a simplified version of real-world recommender systems that use weighted scoring.
 ---
 
 ## 4. Data
@@ -191,6 +193,8 @@ Describe your dataset.
 - What kinds of genres or moods are represented
 - Whose taste does this data mostly reflect
 
+
+The dataset contains a small collection of songs stored in a CSV file with about 18 songs. Each song includes features such as genre, mood, energy, tempo, valence, danceability, and acousticness. The dataset includes a limited range of genres and moods, so it does not represent all types of music. No data was removed, but additional synthetic songs were added to increase variety. Some aspects of musical taste, such as lyrics and cultural context, are not included.
 ---
 
 ## 5. Strengths
@@ -201,6 +205,9 @@ You can think about:
 - Situations where the top results "felt right"
 - Particular user profiles it served well
 - Simplicity or transparency benefits
+
+
+The system works well for simple and clearly defined user preferences, such as high-energy pop or calm chill music. It correctly identifies songs that match strong feature patterns like high energy or matching mood. The scoring system is transparent, so it is easy to understand why a song was recommended. It performs especially well when user preferences align closely with available song features.
 
 ---
 
@@ -213,6 +220,8 @@ Some prompts:
 - Does it treat all users as if they have the same taste shape
 - Is it biased toward high energy or one genre by default
 - How could this be unfair if used in a real product
+
+The recommender system only uses a few features like genre, mood, energy, and tempo. Because of this, it does not capture more detailed aspects of music such as lyrics or emotional meaning. Some genres or moods may be overrepresented in the dataset, which can create bias in recommendations. The scoring system can also over-prioritize certain features depending on the weights. This can cause different users to receive similar recommendations even when their preferences are different.
 
 ---
 
@@ -227,6 +236,8 @@ Examples:
 
 You do not need a numeric metric, but if you used one, explain what it measures.
 
+I tested the recommender using different user profiles such as High Energy Pop, Chill Lofi, and Deep Intense Rock. The system produced different rankings for each profile, showing that it responds to changes in user preferences. I looked at whether the top songs matched the expected mood, genre, and energy levels. One thing I noticed was that some songs appeared across multiple profiles, especially when they had balanced feature values. Overall, the results made sense but showed limitations in personalization due to the simple scoring system.
+
 ---
 
 ## 8. Future Work
@@ -239,6 +250,8 @@ Examples:
 - Balance diversity of songs instead of always picking the closest match
 - Use more features, like tempo ranges or lyric themes
 
+Future improvements could include adding more songs to improve diversity and reduce bias. The system could also use additional features like lyrics or listening history. Another improvement would be introducing diversity in recommendations so results are not too similar. The scoring system could also be improved by learning weights automatically from user feedback.
+
 ---
 
 ## 9. Personal Reflection
@@ -249,3 +262,4 @@ A few sentences about what you learned:
 - How did building this change how you think about real music recommenders
 - Where do you think human judgment still matters, even if the model seems "smart"
 
+This project helped me understand how recommendation systems convert user preferences into ranked outputs using weighted scoring. I learned that even simple systems can produce realistic recommendations. I was surprised by how small changes in weights can significantly change the results. This made me realize how sensitive recommendation systems are to design choices. It also helped me understand how real platforms like Spotify may prioritize different features to influence what users see.

@@ -5,6 +5,7 @@
 Give your model a short, descriptive name.  
 Example: **VibeFinder 1.0**  
 
+VibeMatch Recommender 1.0
 ---
 
 ## 2. Intended Use  
@@ -17,6 +18,7 @@ Prompts:
 - What assumptions does it make about the user  
 - Is this for real users or classroom exploration  
 
+This recommender system is designed to suggest songs based on a user's preferences for genre, mood, energy, and tempo. It generates a ranked list of songs that best match these features using a simple scoring system. It assumes that user preferences can be represented using numerical and categorical features. This system is intended for classroom learning and experimentation, not for real-world music recommendations.
 ---
 
 ## 3. How the Model Works  
@@ -32,6 +34,8 @@ Prompts:
 
 Avoid code here. Pretend you are explaining the idea to a friend who does not program.
 
+The model works by comparing each song’s features with a user’s preferences. It uses genre and mood matches as categorical signals and calculates similarity scores for numerical features like energy and tempo. Each match contributes to a total score, and songs with higher scores are ranked higher. The final recommendations are the top-scoring songs after all comparisons. This is a simplified version of real-world recommender systems that use weighted scoring.
+
 ---
 
 ## 4. Data  
@@ -45,6 +49,8 @@ Prompts:
 - Did you add or remove data  
 - Are there parts of musical taste missing in the dataset  
 
+The dataset contains a small collection of songs stored in a CSV file with about 18 songs. Each song includes features such as genre, mood, energy, tempo, valence, danceability, and acousticness. The dataset includes a limited range of genres and moods, so it does not represent all types of music. No data was removed, but additional synthetic songs were added to increase variety. Some aspects of musical taste, such as lyrics and cultural context, are not included.
+
 ---
 
 ## 5. Strengths  
@@ -56,6 +62,8 @@ Prompts:
 - User types for which it gives reasonable results  
 - Any patterns you think your scoring captures correctly  
 - Cases where the recommendations matched your intuition  
+
+The system works well for simple and clearly defined user preferences, such as high-energy pop or calm chill music. It correctly identifies songs that match strong feature patterns like high energy or matching mood. The scoring system is transparent, so it is easy to understand why a song was recommended. It performs especially well when user preferences align closely with available song features.
 
 ---
 
@@ -101,6 +109,8 @@ Prompts:
 - Improving diversity among the top results  
 - Handling more complex user tastes  
 
+Future improvements could include adding more features such as lyrics or listening history. The system could also be improved by increasing dataset size and diversity to reduce bias. Another improvement would be to introduce diversity in recommendations so that similar songs are not always ranked at the top. Finally, user feedback could be used to dynamically adjust weights in the scoring system.
+
 ---
 
 ## 9. Personal Reflection  
@@ -112,3 +122,5 @@ Prompts:
 - What you learned about recommender systems  
 - Something unexpected or interesting you discovered  
 - How this changed the way you think about music recommendation apps  
+
+This project helped me understand how recommender systems turn user preferences into ranked outputs using simple weighted scoring. I learned that even basic algorithms can produce realistic-looking recommendations. I was surprised by how sensitive the system is to small changes in feature weights. Using AI tools helped speed up debugging and implementation, but I still needed to understand and fix logic errors myself. This project changed how I think about recommendation systems and how platforms like Spotify might prioritize different features.
